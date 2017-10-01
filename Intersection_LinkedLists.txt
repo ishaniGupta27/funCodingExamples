@@ -1,0 +1,57 @@
+//checking Intersection of twoLinked List
+
+public LinkedListNode checkIntersection(LinkedListNode l1,LinkedListNode l2){
+
+//check size and tails
+SizeTail first=fetchSizeTail(LinkedListNode l1);
+SizeTail second=fetchSizeTail(LinkedListNode l2);
+
+if(first.tail != second.tail){
+return null;
+}
+//If taill match then put pointer such that the size appears same
+LinkedListNode longer=first.size>second.size?l1:l2;
+LinkedListNode smaller=first.size>second.size?l2:l1;
+int dif=Math.abs(first.size-second.size);
+while(diff>0){
+longer=longer.next;
+diff--;
+}
+
+while(longer !=smaller){
+longer=longer.next;
+smaller=smaller.next;
+}
+
+return longer;
+
+//loop till nodes are equal
+
+
+
+
+
+}
+
+
+class SizeTail{//it shud start with caps
+public LinkedListNode tail;
+public int size;
+public SizeTail(LinkedListNode tail,int size){
+    this.tail=tail;
+    this.size=size;
+}
+
+}
+
+public SizeTail fetchSizeTail(LinkedListNode nnode){
+    LinkedListNode current= nnode;
+    int countSize=0;
+    while(current.next!=null){
+    countSize=countSize+1;
+    current = current.next;
+    }
+    
+    return new SizeTail(current,countSize);
+
+}

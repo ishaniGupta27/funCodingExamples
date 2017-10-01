@@ -1,0 +1,32 @@
+public static Stack st1=new Stack();
+public static Stack st2=new Stack();
+
+public void pushQueue(int x){
+    st1.push(x);
+}
+
+
+public int pullQueue(){//my approach
+    while(st1 is not empty){
+    st2.push(st1.pull());
+    }
+    
+    int result=st2.pull();
+    
+    while(st2 is not empty){
+    st1.push(st2.pull());
+    }
+    
+    return result;
+}
+
+public int lazyPullQueue(){
+   if(st2.isEmpty()){
+       while(!st1.isEmpty){
+       st2.push(st1.pull);
+        }
+   }
+   
+   return st2.pull();
+
+}

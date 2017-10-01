@@ -1,0 +1,23 @@
+Stack st=new Stack();
+Stack stMin=new Stack();
+public static void pushStack(int val){
+    min=Maths.min(minStack(),val);
+    stMin.push(min);
+    st.push(val);
+}
+
+public static int pullStack(){
+    int val=st.pull();
+    if(val== minStack()){
+    stMin.pull();
+    }
+    return val;
+}
+
+public static int minStack(){
+    if(stMin.isEmpty()){
+    return Integer.MAX_VALUE;
+    }
+
+    return s2.peek();//only shows not remove
+}
