@@ -1,0 +1,44 @@
+public boolean routeBetweenTwoNode(Node a,Node b,Graph q){
+ LinkedList<Node> adj[]=q.adj;
+ Queue qu=new Queue();
+ qu.add(a);
+ a.state=1;
+ while(!qu.isEmpty()){
+   Node current=qu.peek();
+   LinkedList<Node> ll=adj[current];
+   Iterator<Node> i = ll.listIterator();
+   while(i.hasNext()){
+    Node curNode=(node)i.next();
+    if(curNode ==b){
+      return true;
+    }
+    if(curNode.state==0){
+    qu.add(curNode);
+    curNode.state=1;
+    }
+   }
+   qu.pop();
+ }
+ return false;
+}
+
+class Node{//a node has property of val and track of visted or not
+  int val;
+  int state=0;//0 : unvisited, 1: visited
+
+}
+
+
+class Graph{//Defined a graph which has size , node and adjancecy array 
+   int size;//Size of graph
+   LinkedList<Node> adj[];
+   Graph(size){
+    adj=new LinkedList<Node>[size];//array of with "size" number of linkedlist
+   }
+   
+   addEdge(Node a,Node b){
+     adj[a].add(b);
+   }
+
+
+}
