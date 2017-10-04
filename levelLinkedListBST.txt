@@ -1,0 +1,34 @@
+HashMap<Integer,LinkedList<TreeNode>>  findLevelLinkList(TreeNode root){
+    int level=0;
+    HashMap<Integer,LinkedList<TreeNode>> result=new HashMap <Integer,LinkedList<TreeNode>>();
+    LinkedList<TreeNode> ll=new LinkedList();
+    ll.add(root);
+    result.put(0,ll);
+    while(1==1){
+     LinkedList<TreeNode> childll=new LinkedList();
+     LinkedList parentLL=result.get(level);
+     Iterator i= parentLL.listIterator();
+     while(i.hasNext()){//i is the arent node
+         if(i!=null){
+             if(i.left!=null) childll.add(i.left);
+             if(i.right!=null) childll.add(i.right);
+         }
+     }
+     if(childll.size()==0){
+         break;
+     }
+     level++;
+     result.put(level,childll);
+    }
+    
+   return result;
+
+}
+
+
+class TreeNode{
+   int val;
+   TreeNode left;
+   TreeNode right;
+
+}
